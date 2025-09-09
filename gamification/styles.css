@@ -1,0 +1,298 @@
+/* ================================
+   Leaderboard Container
+================================ */
+.block_gamification .gamification-container {
+    max-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    background: #fff;
+}
+
+/* ================================
+   XP / Rank Summary (Top Card)
+================================ */
+.block_gamification .gamification-user-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    background: #f9fafc;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.05);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.block_gamification .gamification-user-summary .summary-item {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    row-gap: 4px;
+    min-height: 90px;
+}
+
+.block_gamification .gamification-user-summary .summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    height: 28px;
+    line-height: 1;
+}
+
+.block_gamification .gamification-user-summary .summary-label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.block_gamification .gamification-user-summary .summary-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1d74fff0;
+}
+
+/* ================================
+   Leaderboard Table
+================================ */
+.block_gamification .gamification-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #333;
+}
+
+.block_gamification .gamification-table thead th {
+    position: sticky;
+    top: 0;
+    background: #e0e0e0;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    text-align: left;
+    font-weight: 600;
+    color: #444;
+    z-index: 2;
+}
+
+.block_gamification .gamification-table tbody td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.block_gamification .gamification-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.block_gamification .gamification-table tbody tr {
+    transition: background 0.2s ease;
+}
+.block_gamification .gamification-table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+.block_gamification .gamification-table tbody tr.highlight {
+    background: #d6ecff !important;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Rank column */
+.block_gamification .gamification-table td.rank-col {
+    text-align: center;
+    width: 50px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* User column with avatar */
+.block_gamification .user-with-avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.block_gamification .user-with-avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* ================================
+   Scrollbar Styling
+================================ */
+.block_gamification .gamification-container::-webkit-scrollbar {
+    width: 8px;
+}
+.block_gamification .gamification-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.block_gamification .gamification-container::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+.block_gamification .gamification-container::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* ================================
+   XP Form + Buttons
+================================ */
+/* XP Form container */
+.block_gamification .gamification-givexp-form {
+    margin-top: 16px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #f9fafc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Remove clunky Moodle form labels */
+.block_gamification .gamification-givexp-form .fitem {
+    margin-bottom: 10px;
+}
+.block_gamification .gamification-givexp-form .fitem .fitemtitle,
+.block_gamification .gamification-givexp-form .form-label,
+.block_gamification .gamification-givexp-form .form-description {
+    display: none !important;
+}
+
+/* Wrapper for positioning */
+.block_gamification .autocomplete-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px; /* same as your input’s width */
+}
+
+/* Suggestions dropdown */
+.block_gamification .autocomplete-suggestions {
+    position: absolute;
+    top: 100%; /* right below input */
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 2px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 9999;
+
+    /* ✅ force same width as parent (input) */
+    width: 100%;
+    box-sizing: border-box; 
+    font-size: 0.9rem;
+}
+
+/* Suggestion item */
+.block_gamification .autocomplete-item {
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.block_gamification .autocomplete-item:hover {
+    background: #f0f0f0;
+}
+
+
+
+
+/* XP input */
+.block_gamification .gamification-givexp-form input[name="points"] {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    width: 100px;
+    margin: 12px auto;
+    display: block;
+}
+
+/* Buttons row */
+.block_gamification .gamification-givexp-form .fgroup {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+/* Give XP (blue) */
+.block_gamification .gamification-givexp-form input[name="give"] {
+    background: #0073e6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.block_gamification .gamification-givexp-form input[name="give"]:hover {
+    background: #005bb5;
+}
+
+/* Take XP (red) */
+.block_gamification .gamification-givexp-form input[name="take"] {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.block_gamification .gamification-givexp-form input[name="take"]:hover {
+    background: #b02a37;
+}
+
+/* Export button */
+.block_gamification .gamification-export-row {
+    text-align: center;
+    margin-top: 15px;
+}
+.block_gamification .gamification-export-row .btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #808080;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.block_gamification .gamification-export-row .btn:hover {
+    background: #606060;
+}
+
+/* Toast popup */
+.gamification-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0073e6;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+.gamification-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
