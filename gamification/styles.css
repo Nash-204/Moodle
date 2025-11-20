@@ -1,0 +1,1047 @@
+/* ==============================
+    GAMIFICATION BLOCK STYLES 
+================================= */
+
+/* Main container - width can be overridden by themes */
+body .block_gamification .gamification-container {
+    /* Width is intentionally NOT set with !important to allow theme overrides */
+    width: 100%;
+    max-height: 320px !important;
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+    border: 1px solid #ddd !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+    background: #fff !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}
+
+/* Allow block width to be controlled by theme */
+body .block_gamification {
+    /* This allows the theme to control the block width */
+    width: 100%;
+}
+
+/* But protect internal widths */
+body .block_gamification .gamification-leaderboard {
+    border: 1px solid #e0e0e0 !important;
+    background: #fff !important;
+    margin-bottom: 20px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05) !important;
+    box-sizing: border-box !important;
+    /* Internal elements maintain full width of their container */
+    width: 100% !important;
+}
+
+body .block_gamification .gamification-leaderboard.card {
+    padding: 0.25rem 1rem 1rem 1rem !important;
+}
+
+/* =====================================
+   USER SUMMARY CARD
+===================================== */
+
+body .block_gamification .gamification-user-summary {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    background: #f9fafc !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    padding: 14px 10px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,.05) !important;
+    font-family: 'Segoe UI', Tahoma, sans-serif !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+body .block_gamification .gamification-user-summary .summary-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    row-gap: 4px !important;
+    min-height: 90px !important;
+    flex: 1 !important;
+    max-width: 50% !important;
+}
+
+body .block_gamification .gamification-user-summary .summary-icon {
+    font-size: 28px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 30px !important;
+}
+
+body .block_gamification .gamification-user-summary .summary-label {
+    font-size: 0.86rem !important;
+    font-weight: 600 !important;
+    color: #666 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .5px !important;
+    text-align: center !important;
+    width: 100% !important;
+    line-height: 1.2 !important;
+}
+
+body .block_gamification .gamification-user-summary .summary-value {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #1d74fff0 !important;
+    text-align: center !important;
+    width: 100% !important;
+    line-height: 1.2 !important;
+}
+
+/* =====================================
+   LEADERBOARD TABLE
+===================================== */
+
+body .block_gamification .gamification-table {
+    /* Table width should be 100% of its container */
+    width: 100% !important;
+    min-width: 500px !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    margin-top: -1px !important;
+    border-spacing: 0 !important;
+}
+
+/* Reset any theme table styles */
+body .block_gamification .gamification-table,
+body .block_gamification .gamification-table * {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+}
+
+/* Table Headers */
+body .block_gamification .gamification-table thead th {
+    position: sticky !important;
+    top: -1px !important; 
+    padding: 10px !important;
+    border-bottom: 2px solid #ccc !important;
+    background-clip: padding-box !important;
+    text-align: left !important;
+    font-weight: 600 !important;
+    color: #444 !important;
+    z-index: 100 !important;
+    background: #f8f9fa !important;
+    box-sizing: border-box !important;
+}
+
+/* Table Body */
+body .block_gamification .gamification-table tbody td {
+    padding: 8px 10px !important;
+    border-bottom: 1px solid #eee !important;
+    box-sizing: border-box !important;
+}
+
+body .block_gamification .gamification-table tbody tr:nth-child(even) {
+    background: #fafafa !important;
+}
+
+body .block_gamification .gamification-table tbody tr:hover {
+    background: #f1f1f1 !important;
+    transition: background 0.2s ease !important;
+}
+
+body .block_gamification .gamification-table tbody tr.highlight {
+    font-weight: 600 !important;
+    color: #000 !important;
+}
+
+/* Column Specific Styles */
+body .block_gamification .gamification-table td.rank-col {
+    text-align: center !important;
+    width: 50px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+body .block_gamification .gamification-table td.profile-col {
+    text-align: center !important;
+    width: 45px !important;
+    padding-right: 4px !important;
+}
+
+body .block_gamification .gamification-table td.name-col {
+    text-align: left !important;
+    padding-left: 4px !important;
+    width: 150px !important;
+}
+
+body .block_gamification .gamification-table td.groups-col {
+    text-align: left !important;
+    padding-left: 4px !important;
+    max-width: 150px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+body .block_gamification .gamification-table td.xp-col {
+    width: 100px !important; 
+    text-align: left !important;
+    padding-right: 15px !important;
+    font-weight: 600 !important;
+}
+
+/* =====================================
+   LEADERBOARD VARIATIONS
+===================================== */
+
+/* Real-time Leaderboard */
+body .block_gamification .gamification-leaderboard.realtime {
+    border: 2px solid #303030 !important;
+    background: linear-gradient(135deg, #fffdf0 0%, #fff 100%) !important;
+    box-shadow: 0 6px 20px rgba(93, 93, 93, 0.25) !important;
+    position: relative !important;
+}
+
+body .block_gamification .gamification-leaderboard.realtime .gamification-table thead th {
+    background: #e0e0e0 !important;
+}
+
+body .block_gamification .gamification-leaderboard.realtime .gamification-leaderboard-title {
+    color: #000000 !important;
+}
+
+body .block_gamification .gamification-leaderboard.realtime::after {
+    content: "Updates Real-Time!" !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 0.8rem !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    margin-top: 8px !important;
+}
+
+/* Monthly Leaderboard */
+body .block_gamification .gamification-leaderboard.monthly {
+    border: 2px solid #f39030 !important;
+    background: linear-gradient(135deg, #fffaf0 0%, #fff 100%) !important;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15) !important;
+    position: relative !important;
+}
+
+body .block_gamification .gamification-leaderboard.monthly .gamification-table thead th {
+    background: #f39030 !important;
+    color: white !important;
+}
+
+body .block_gamification .gamification-leaderboard.monthly .gamification-leaderboard-title {
+    color: #f39030 !important;
+    font-weight: 600 !important;
+}
+
+body .block_gamification .gamification-leaderboard.monthly .rank-col {
+    background: rgba(244, 182, 47, 0.1) !important;
+    margin: 2px !important;
+    font-weight: bold !important;
+}
+
+body .block_gamification .gamification-leaderboard.monthly tr.highlight {
+    background: linear-gradient(90deg, rgba(248, 156, 35, 0.15) 0%, transparent 100%) !important;
+    font-weight: 700 !important;
+}
+
+body .block_gamification .gamification-leaderboard.monthly .gamification-container {
+    max-height: 270px !important;
+}
+
+body .block_gamification .gamification-leaderboard.monthly::after {
+    content: "Top 10 of the Month!" !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 0.8rem !important;
+    color: #f29031 !important;
+    font-weight: 600 !important;
+    margin-top: 8px !important;
+}
+
+/* Yearly Leaderboard */
+body .block_gamification .gamification-leaderboard.yearly {
+    border: 3px solid #34459c !important;
+    background: linear-gradient(135deg, #fffdf0 0%, #fff 100%) !important;
+    box-shadow: 0 6px 20px #202b6a7d !important;
+    position: relative !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly .gamification-table thead th {
+    background: #34459c !important;
+    color: #ffffff !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly .gamification-leaderboard-title {
+    background: linear-gradient(45deg, #202b6a, #34459c) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly .rank-col {
+    background: rgba(11, 24, 113, 0.15) !important;
+    margin: 2px !important;
+    font-weight: bold !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly tr:nth-child(-n+3) {
+    background: linear-gradient(90deg, rgba(9, 23, 146, 0.1) 0%, transparent 100%) !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly tr.highlight {
+    background: linear-gradient(90deg, rgba(48, 16, 207, 0.2) 0%, transparent 100%) !important;
+    font-weight: 700 !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly .gamification-container {
+    max-height: 200px !important;
+}
+
+body .block_gamification .gamification-leaderboard.yearly::after {
+    content: "Top 5 Champions!" !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 0.8rem !important;
+    color: #202b6a !important;
+    font-weight: 600 !important;
+    margin-top: 8px !important;
+}
+
+/* Leaderboard Titles */
+body .block_gamification .gamification-leaderboard-title {
+    padding: 12px 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+/* =====================================
+   LEADERBOARD ADMIN BUTTONS
+===================================== */
+
+body .block_gamification .gamification-admin-btn {
+    padding: 8px 24px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+    max-width: 300px !important;
+    display: inline-block !important;
+}
+
+body .block_gamification .gamification-admin-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+    text-decoration: none !important;
+}
+
+/* Center the title properly */
+body .block_gamification .gamification-leaderboard-title {
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* Ensure button container is properly centered */
+body .block_gamification .text-center {
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* =====================================
+   XP MANAGEMENT FORM 
+===================================== */
+
+body .block_gamification .gamification-givexp-form {
+    margin: 16px auto !important;
+    padding: 15px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 10px !important;
+    background: #f9fafc !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05) !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    box-sizing: border-box !important;
+}
+
+/* Layout */
+body .block_gamification .gamification-givexp-form .form-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    margin-bottom: 14px !important;
+}
+
+/* Autocomplete Fields */
+body .block_gamification .gamification-givexp-form .autocomplete-wrapper {
+    position: relative !important;
+    flex: 1 !important;
+    min-width: 250px !important;
+    max-width: 400px !important;
+}
+
+body .block_gamification .gamification-givexp-form .autocomplete-wrapper input[type="text"] {
+    width: 100% !important;
+    height: 40px !important;
+    padding: 0 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    font-size: 0.95rem !important;
+    color: #333 !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body .block_gamification .gamification-givexp-form .autocomplete-wrapper input[type="text"]:focus {
+    border-color: #0073e6 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.2) !important;
+}
+
+/* Autocomplete Dropdown */
+body .block_gamification .gamification-givexp-form .autocomplete-suggestions {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+    z-index: 9999 !important;
+    max-height: 220px !important;
+    overflow-y: auto !important;
+    margin-top: 3px !important;
+    animation: fadeIn 0.15s ease-in !important;
+}
+
+body .block_gamification .gamification-givexp-form .autocomplete-item {
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+    color: #333 !important;
+    font-size: 0.95rem !important;
+    transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+body .block_gamification .gamification-givexp-form .autocomplete-item:hover {
+    background: #0073e6 !important;
+    color: #fff !important;
+}
+
+body .block_gamification .gamification-givexp-form .autocomplete-item:not(:last-child) {
+    border-bottom: 1px solid #eee !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-2px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Inputs (XP Number + Dropdowns) */
+body .block_gamification .gamification-givexp-form .xp-number,
+body .block_gamification .gamification-givexp-form .xp-select {
+    height: 40px !important;
+    width: 160px !important;
+    padding: 0 12px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    font-size: 0.95rem !important;
+    color: #333 !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Center dropdown text and options consistently */
+body .block_gamification .gamification-givexp-form .xp-select {
+    height: 40px !important;
+    width: 160px !important;
+    line-height: 40px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    background-color: #fff !important;
+    color: #333 !important;
+    font-size: 0.95rem !important;
+    box-sizing: border-box !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+
+    /* Center text properly */
+    text-align: center !important;
+    text-align-last: center !important;
+    -moz-text-align-last: center !important;
+
+    /* Balanced padding to account for the arrow */
+    padding: 0 5px 0 5px !important;
+
+    /* Custom arrow (SVG icon) */
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 16px !important;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+/* Center items inside dropdown (browser-dependent but works in Chrome, Edge, Firefox) */
+body .block_gamification .gamification-givexp-form .xp-select option {
+    text-align: center !important;
+}
+
+body .block_gamification .gamification-givexp-form .xp-number:focus,
+body .block_gamification .gamification-givexp-form .xp-select:focus {
+    border-color: #0073e6 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.2) !important;
+}
+
+body .block_gamification .gamification-givexp-form .xp-number:hover,
+body .block_gamification .gamification-givexp-form .xp-select:hover {
+    border-color: #999 !important;
+}
+
+/* Buttons */
+body .block_gamification .gamification-givexp-form .buttons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+}
+
+body .block_gamification .gamification-givexp-form .btn {
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    box-sizing: border-box !important;
+}
+
+/* Primary Button */
+body .block_gamification .gamification-givexp-form .btn-primary {
+    background: #0073e6 !important;
+    color: #fff !important;
+}
+
+body .block_gamification .gamification-givexp-form .btn-primary:hover {
+    background: #005bb5 !important;
+}
+
+body .block_gamification .gamification-givexp-form .btn-primary:focus,
+body .block_gamification .gamification-givexp-form .btn-primary:active {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.4) !important;
+}
+
+/* Danger Button */
+body .block_gamification .gamification-givexp-form .btn-danger {
+    background: #dc3545 !important;
+    color: #fff !important;
+}
+
+body .block_gamification .gamification-givexp-form .btn-danger:hover {
+    background: #b02a37 !important;
+}
+
+body .block_gamification .gamification-givexp-form .btn-danger:focus,
+body .block_gamification .gamification-givexp-form .btn-danger:active {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.4) !important;
+}
+
+/* Export Button */
+body .block_gamification .gamification-export-row {
+    text-align: center !important;
+    margin-top: 15px !important;
+}
+
+
+body .block_gamification .gamification-export-row .btn:focus,
+body .block_gamification .gamification-export-row .btn:active {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.4) !important;
+}
+
+/* =====================================
+   BADGES SECTION
+===================================== */
+body .gamification-badges-container {
+    margin: 15px 0 !important;
+    padding: 15px !important;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+body .gamification-badges-title {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+}
+
+body .gamification-badges-strip {
+    display: flex !important;
+    gap: 18px !important;
+    overflow-x: auto !important;
+    padding: 10px 6px !important;
+    align-items: flex-start !important;
+}
+
+/* Badge Items */
+body .badge-item {
+    flex: 0 0 auto !important;
+    text-align: center !important;
+    width: 110px !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+body .badge-wrapper {
+    position: relative !important;
+    cursor: default !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+body .badge-icon {
+    width: 100px !important;
+    height: 100px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto 6px !important;
+    border-radius: 0 !important;
+}
+
+body .badge-name {
+    font-size: 0.85rem !important;
+    color: #333 !important;
+    line-height: 1.1 !important;
+    min-height: 2.2em !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    word-wrap: break-word !important;
+    padding: 0 2px !important;
+}
+
+/* Badge States */
+body .badge-earned {
+    filter: none !important;
+    opacity: 1 !important;
+    transition: transform .12s ease !important;
+}
+
+body .badge-earned:hover {
+    transform: translateY(-4px) !important;
+}
+
+body .badge-locked {
+    filter: grayscale(100%) opacity(0.50) !important;
+}
+
+body .badge-lock {
+    position: absolute !important;
+    top: 30% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100px !important;
+    height: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 35px !important;
+    color: rgba(0,0,0,0.65) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+/* Fallback for missing badge images */
+body .badge-icon:not([src]) {
+    background: #e9ecef !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+body .badge-icon:not([src])::before {
+    content: "🏆" !important;
+    font-size: 24px !important;
+    opacity: 0.5 !important;
+}
+
+/* =====================================
+   ADMIN BADGE TOGGLE SWITCH
+===================================== */
+
+body .block_gamification .admin-badge-toggle {
+    margin-left: auto !important;
+}
+
+body .block_gamification .toggle-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 0.85rem !important;
+}
+
+body .block_gamification .toggle-label {
+    font-weight: 600 !important;
+    color: #666 !important;
+    transition: color 0.3s ease !important;
+    cursor: pointer !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+}
+
+body .block_gamification .toggle-label.active {
+    color: #0073e6 !important;
+    font-weight: 700 !important;
+}
+
+body .block_gamification .toggle-switch {
+    position: relative !important;
+    display: inline-block !important;
+    width: 50px !important;
+    height: 24px !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+}
+
+body .block_gamification .toggle-checkbox {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+}
+
+body .block_gamification .toggle-slider {
+    position: absolute !important;
+    cursor: pointer !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: #ccc !important;
+    transition: .4s !important;
+    border-radius: 24px !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2) !important;
+}
+
+body .block_gamification .toggle-slider:before {
+    position: absolute !important;
+    content: "" !important;
+    height: 18px !important;
+    width: 18px !important;
+    left: 3px !important;
+    bottom: 3px !important;
+    background-color: white !important;
+    transition: .4s !important;
+    border-radius: 50% !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+}
+
+body .block_gamification .toggle-checkbox:checked + .toggle-slider {
+    background-color: #0073e6 !important;
+}
+
+body .block_gamification .toggle-checkbox:checked + .toggle-slider:before {
+    transform: translateX(26px) !important;
+}
+
+body .block_gamification .toggle-checkbox:focus + .toggle-slider {
+    box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.3) !important;
+}
+
+/* Smooth transitions for badge states */
+body .block_gamification .badge-icon,
+body .block_gamification .badge-lock {
+    transition: all 0.3s ease !important;
+}
+
+body .block_gamification .badge-lock {
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+/* =====================================
+   NOTIFICATIONS & FEEDBACK
+===================================== */
+
+/* Toast Popup */
+body .gamification-toast {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    background: #0073e6 !important;
+    color: #fff !important;
+    padding: 12px 18px !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+    transition: all 0.3s ease !important;
+    z-index: 99999 !important;
+}
+
+body .gamification-toast.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* More specific error box protection */
+body .block_gamification .gamification-error-box {
+    background: #ffe0e0 !important;
+    color: #b00020 !important;
+    padding: 8px 12px !important;
+    border: 1px solid #ffb3b3 !important;
+    border-radius: 6px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    display: block !important; /* Force display when shown */
+    text-align: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;  
+    z-index: 1000 !important;
+}
+
+/* Counter theme display overrides */
+body .block_gamification .gamification-givexp-form .gamification-error-box {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* =====================================
+   SCROLLBAR STYLING
+===================================== */
+
+body .block_gamification .gamification-container::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+body .block_gamification .gamification-container::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 10px !important;
+}
+
+body .block_gamification .gamification-container::-webkit-scrollbar-thumb {
+    background: #bbb !important;
+    border-radius: 10px !important;
+}
+
+body .block_gamification .gamification-container::-webkit-scrollbar-thumb:hover {
+    background: #888 !important;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 768px) {
+    body .block_gamification .gamification-table {
+        font-size: 12px !important;
+    }
+    
+    body .block_gamification .gamification-table td,
+    body .block_gamification .gamification-table th {
+        padding: 6px 8px !important;
+    }
+    
+    body .block_gamification .gamification-leaderboard-title {
+        font-size: 1rem !important;
+    }
+    
+    /* Badges adjustments */
+    body .gamification-badges-strip {
+        gap: 12px !important;
+        padding: 8px 4px !important;
+    }
+    
+    body .badge-item {
+        width: 95px !important;
+    }
+    
+    body .badge-icon {
+        width: 85px !important;
+        height: 85px !important;
+    }
+    
+    body .badge-lock {
+        width: 85px !important;
+        height: 85px !important;
+        font-size: 30px !important;
+    }
+    
+    body .badge-name {
+        font-size: 0.8rem !important;
+    }
+
+    /* Toggle adjustments for mobile */
+    body .block_gamification .toggle-container {
+        gap: 8px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    body .block_gamification .toggle-label {
+        font-size: 0.75rem !important;
+    }
+    
+    body .block_gamification .toggle-switch {
+        width: 45px !important;
+        height: 22px !important;
+    }
+    
+    body .block_gamification .toggle-slider:before {
+        height: 16px !important;
+        width: 16px !important;
+        left: 3px !important;
+        bottom: 3px !important;
+    }
+    
+    body .block_gamification .toggle-checkbox:checked + .toggle-slider:before {
+        transform: translateX(23px) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    body .block_gamification .gamification-table {
+        font-size: 11px !important;
+    }
+    
+    body .block_gamification .gamification-table td.name-col {
+        max-width: 100px !important; 
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+    
+    body .block_gamification .gamification-table td.groups-col {
+        max-width: 80px !important;
+    }
+
+    /* Toggle adjustments for small mobile */
+    body .block_gamification .toggle-container {
+        gap: 6px !important;
+    }
+    
+    body .block_gamification .toggle-label {
+        font-size: 0.7rem !important;
+    }
+    
+    body .block_gamification .toggle-switch {
+        width: 40px !important;
+        height: 20px !important;
+    }
+    
+    body .block_gamification .toggle-slider:before {
+        height: 14px !important;
+        width: 14px !important;
+    }
+    
+    body .block_gamification .toggle-checkbox:checked + .toggle-slider:before {
+        transform: translateX(20px) !important;
+    }
+}
+
+/* =====================================
+   CRITICAL RESET STYLES
+   To counter aggressive theme resets
+===================================== */
+
+/* Reset box-sizing for all gamification elements */
+body .block_gamification,
+body .block_gamification *,
+body .block_gamification *::before,
+body .block_gamification *::after {
+    box-sizing: border-box !important;
+}
+
+/* Ensure display properties aren't overridden */
+body .block_gamification .gamification-container,
+body .block_gamification .gamification-leaderboard,
+body .block_gamification .gamification-user-summary,
+body .block_gamification .gamification-table,
+body .block_gamification .gamification-givexp-form,
+body .gamification-badges-container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Counter potential theme flex/grid resets */
+body .block_gamification .gamification-user-summary,
+body .block_gamification .gamification-givexp-form .form-row,
+body .block_gamification .gamification-givexp-form .buttons,
+body .gamification-badges-strip {
+    display: flex !important;
+}
+
+body .block_gamification .gamification-user-summary .summary-item,
+body .badge-item {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Ensure tables remain tables */
+body .block_gamification .gamification-table {
+    display: table !important;
+}
+
+body .block_gamification .gamification-table thead {
+    display: table-header-group !important;
+}
+
+body .block_gamification .gamification-table tbody {
+    display: table-row-group !important;
+}
+
+body .block_gamification .gamification-table tr {
+    display: table-row !important;
+}
+
+body .block_gamification .gamification-table th,
+body .block_gamification .gamification-table td {
+    display: table-cell !important;
+}
+
+/* Ensure toggle components aren't overridden */
+body .block_gamification .admin-badge-toggle,
+body .block_gamification .toggle-container,
+body .block_gamification .toggle-switch,
+body .block_gamification .toggle-slider {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body .block_gamification .toggle-checkbox {
+    position: absolute !important;
+}

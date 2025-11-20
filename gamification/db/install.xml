@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/gamification/db" VERSION="20230905" COMMENT="XP leaderboard tables + badges">
+    <TABLES>
+        <!-- Store User XP Table -->
+        <TABLE NAME="block_gamification" COMMENT="Stores user XP">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="xp" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="uniq_user" UNIQUE="true" FIELDS="userid"/>
+            </INDEXES>
+        </TABLE>
+
+        <!-- Store earned badges Table -->
+        <TABLE NAME="block_gamif_badges" COMMENT="Stores earned gamification badges">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="badgecode" TYPE="char" LENGTH="100" NOTNULL="true" COMMENT="Unique badge identifier"/>
+                <FIELD NAME="timeearned" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Timestamp earned"/>
+                <FIELD NAME="period" TYPE="char" LENGTH="20" NOTNULL="false" COMMENT="Period for monthly/annual badges (e.g., 2024-03, 2024)"/>
+                <FIELD NAME="display_name" TYPE="char" LENGTH="255" NOTNULL="false" COMMENT="Custom display name for badge"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="user_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="uniq_user_badge_period" UNIQUE="true" FIELDS="userid, badgecode, period"/>
+            </INDEXES>
+        </TABLE>
+        <!-- Define Available Badges Table -->
+        <TABLE NAME="block_gamif_badges_def" COMMENT="Available gamification badges definitions">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="badgecode" TYPE="char" LENGTH="100" NOTNULL="true" COMMENT="Unique badge identifier"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" COMMENT="Badge display name"/>
+                <FIELD NAME="description" TYPE="text" NOTNULL="false" COMMENT="Description of when this badge is earned"/>
+                <FIELD NAME="image" TYPE="char" LENGTH="255" NOTNULL="false" COMMENT="Image file path or URL"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="uniq_code" TYPE="unique" FIELDS="badgecode"/>
+            </KEYS>
+        </TABLE>
+        <!-- Streaks Table -->
+        <TABLE NAME="block_gamif_streaks" COMMENT="Track user login streaks">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="lastlogin" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="dailystreak" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="weeklystreak" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="userid_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <!-- Monthly Leaderboard Table -->
+        <TABLE NAME="block_gamif_monthly" COMMENT="Snapshot of monthly leaderboard">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="xp" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="userid_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <!-- Yearly Leaderboard Table -->
+        <TABLE NAME="block_gamif_yearly" COMMENT="Snapshot of yearly leaderboard">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="xp" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="userid_fk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <!-- Quiz Difficulty Table -->
+        <TABLE NAME="block_gamif_quizdiff" COMMENT="Stores difficulty levels for quizzes">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="quizid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="difficulty" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="Easy, Medium, Hard"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="quiz_fk" TYPE="foreign" FIELDS="quizid" REFTABLE="quiz" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="uniq_quiz" UNIQUE="true" FIELDS="quizid"/>
+            </INDEXES>
+        </TABLE>
+
+        <!-- Course Level Table -->
+        <TABLE NAME="block_gamif_coursediff" COMMENT="Stores difficulty levels for courses">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="level" TYPE="char" LENGTH="20" NOTNULL="true" COMMENT="Beginner, Intermediate, Advance"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course_fk" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="uniq_course" UNIQUE="true" FIELDS="courseid"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>
