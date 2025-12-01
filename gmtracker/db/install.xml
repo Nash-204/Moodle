@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/gmtracker/db" VERSION="2025101704" COMMENT="XMLDB file for Google Meet Tracker module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+
+    <TABLES>
+
+        <!-- Table for trainings -->
+        <TABLE NAME="gmtracker" COMMENT="Stores Google Meet session information">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key" />
+                <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Course ID" />
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" COMMENT="Meeting name" />
+                <FIELD NAME="intro" TYPE="text" NOTNULL="false" COMMENT="Meeting description" />
+                <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" COMMENT="Intro format" />
+                <FIELD NAME="gmeetlink" TYPE="text" NOTNULL="false" COMMENT="Google Meet link" />
+                <FIELD NAME="hostemail" TYPE="char" LENGTH="255" NOTNULL="true" COMMENT="Host email" />
+                <FIELD NAME="meetingdate" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Unix timestamp of meeting start" />
+                <FIELD NAME="duration" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Duration in minutes" />
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Last modified timestamp" />
+                <!-- Onsite Training -->
+                <FIELD NAME="meetingtype" TYPE="char" LENGTH="10" NOTNULL="true" DEFAULT="'online'" COMMENT="Meeting type: online or onsite" />
+                <FIELD NAME="location" TYPE="text" NOTNULL="false" COMMENT="Physical location for onsite meetings" />
+                <FIELD NAME="joincode" TYPE="char" LENGTH="6" NOTNULL="false" COMMENT="Join code for onsite meetings" />
+                <FIELD NAME="leavecode" TYPE="char" LENGTH="6" NOTNULL="false" COMMENT="Leave code for onsite meetings" />
+                <!-- CALENDAR INTEGRATION -->
+                <FIELD NAME="addtocalendar" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1" COMMENT="Add to calendar flag (0=no, 1=yes)" />
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Creation timestamp" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+                <KEY NAME="coursefk" TYPE="foreign" FIELDS="course" REFTABLE="course" REFFIELDS="id" />
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="course_idx" UNIQUE="false" FIELDS="course" />
+                <INDEX NAME="meetingdate_idx" UNIQUE="false" FIELDS="meetingdate" />
+                <INDEX NAME="meetingtype_idx" UNIQUE="false" FIELDS="meetingtype" />
+            </INDEXES>
+        </TABLE>
+
+        <!-- Table for attendance tracking -->
+        <TABLE NAME="gmtracker_attendance" COMMENT="Records user join/leave times for meetings">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key" />
+                <FIELD NAME="gmtrackerid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="FK to gmtracker" />
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="User ID" />
+                <FIELD NAME="jointime" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Join timestamp" />
+                <FIELD NAME="leavetime" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Leave timestamp" />
+                <FIELD NAME="duration" TYPE="int" LENGTH="10" NOTNULL="false" COMMENT="Total duration in seconds" />
+                <FIELD NAME="incomplete" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" COMMENT="Flag for incomplete attendance records" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+                <KEY NAME="gmtrackerfk" TYPE="foreign" FIELDS="gmtrackerid" REFTABLE="gmtracker" REFFIELDS="id" />
+                <KEY NAME="userfk" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id" />
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="gmtracker_user_idx" UNIQUE="false" FIELDS="gmtrackerid, userid" />
+                <INDEX NAME="jointime_idx" UNIQUE="false" FIELDS="jointime" />
+                <INDEX NAME="leavetime_idx" UNIQUE="false" FIELDS="leavetime" />
+            </INDEXES>
+        </TABLE>
+
+        <!-- Table for email queue for batch processing -->
+        <TABLE NAME="gmtracker_email_queue" COMMENT="Stores email batches for background processing">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
+                <FIELD NAME="gmtrackerid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" COMMENT="FK to gmtracker"/>
+                <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" COMMENT="Course ID"/>
+                <FIELD NAME="subject" TYPE="char" LENGTH="255" NOTNULL="true" COMMENT="Email subject"/>
+                <FIELD NAME="messagetext" TYPE="text" NOTNULL="true" COMMENT="Plain text message"/>
+                <FIELD NAME="messagehtml" TYPE="text" NOTNULL="true" COMMENT="HTML message"/>
+                <FIELD NAME="batch_data" TYPE="text" NOTNULL="true" COMMENT="JSON encoded array of user data"/>
+                <FIELD NAME="batch_number" TYPE="int" LENGTH="5" NOTNULL="true" DEFAULT="0" COMMENT="Batch sequence number"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending" COMMENT="pending, sent, failed"/>
+                <FIELD NAME="processed_count" TYPE="int" LENGTH="5" NOTNULL="false" DEFAULT="0" COMMENT="Number of successfully processed emails"/>
+                <FIELD NAME="failed_count" TYPE="int" LENGTH="5" NOTNULL="false" DEFAULT="0" COMMENT="Number of failed emails"/>
+                <FIELD NAME="error_message" TYPE="text" NOTNULL="false" COMMENT="Error message if batch failed"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Creation timestamp"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Last modified timestamp"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="gmtrackerfk" TYPE="foreign" FIELDS="gmtrackerid" REFTABLE="gmtracker" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="status_idx" UNIQUE="false" FIELDS="status"/>
+                <INDEX NAME="timecreated_idx" UNIQUE="false" FIELDS="timecreated"/>
+                <INDEX NAME="courseid_idx" UNIQUE="false" FIELDS="courseid"/>
+            </INDEXES>
+        </TABLE>
+
+    </TABLES>
+</XMLDB>
